@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+
+/* grid는 flex보다 나중에 나왔음
+flex는 한방향 배치 구현
+grid는 두방향 배치 구현
+장단점을 살려 두개를 같이 사용함
+두개를 다 안다면 알맞는 곳에 사용할 수 있다.
+전체 구성은 grid로 하고 부분 구성은 flex로 하는 경우가 많다. */
+
+.container{
+  display: grid;
+  border: 2px solid #000 ;
+  background-color: forestgreen;
+  padding: 10px;
+}
+
+.container .item{
+  padding: 10px;
+  border: 2px solid #000 ;
+  background-color: silver;
+}
+
+/* auto-fill, auto-fit */
+.container{
+  grid-template-columns: repeat(3, 20%);
+  grid-template-columns: repeat(3,minmax(20%,auto));
+  /* 최소는 20%인데 남는게 있으면 auto로 채워라. */
+  grid-template-columns: repeat(auto-fill,minmax(20%,auto));
+  /* 20프로니까 한줄에 5개 들어가겠네? 라고 컴퓨터가 계산해서 넣어줌 auto-fill */
+  grid-template-columns: repeat(auto-fit,minmax(20%,auto));
+  /* 빈곳이 생기면 채워준다 auto-fit fill은 빈곳이 있으면 남겨둔다. */
+}

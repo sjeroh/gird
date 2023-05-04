@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+
+/* grid는 flex보다 나중에 나왔음
+flex는 한방향 배치 구현
+grid는 두방향 배치 구현
+장단점을 살려 두개를 같이 사용함
+두개를 다 안다면 알맞는 곳에 사용할 수 있다.
+전체 구성은 grid로 하고 부분 구성은 flex로 하는 경우가 많다. */
+
+.container{
+  display: grid;
+  /* 그리드와 플렉스는 자식요소가 인라인이라고 하더라도 블럭요소로 변환된다. */
+  border: 2px solid #000 ;
+  background-color: forestgreen;
+  padding: 10px;
+  grid-template-columns: 100px 300px 1fr;
+  grid-template-columns: 300px 1fr;
+  /* fr:fraction */
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: repeat(3,1fr); /* 1fr을 3번 반복한다는말 */
+  grid-template-columns: repeat(3,1fr 2fr 1fr);
+  grid-template-rows: 200px 200px; 
+  /* 설정한 1,2줄은 높이가 200px로 적용되고 나머지는 auto가 된다. */
+  grid-template-columns: 100px 300px 1fr;
+  grid-template-rows: repeat(4,1fr);
+  grid-template-rows: repeat(2,1fr);
+  grid-template-rows: repeat(2,1fr) 300px 300px;
+  height: 80vh;
+}
+
+.container .item{
+  padding: 10px;
+  border: 2px solid #000 ;
+  background-color: silver;
+}

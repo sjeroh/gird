@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+
+/* grid는 flex보다 나중에 나왔음
+flex는 한방향 배치 구현
+grid는 두방향 배치 구현
+장단점을 살려 두개를 같이 사용함
+두개를 다 안다면 알맞는 곳에 사용할 수 있다.
+전체 구성은 grid로 하고 부분 구성은 flex로 하는 경우가 많다. */
+
+.container{
+  display: grid;
+  border: 2px solid #000 ;
+  background-color: forestgreen;
+  padding: 10px;
+}
+
+.container .item{
+  padding: 10px;
+  border: 2px solid #000 ;
+  background-color: silver;
+}
+
+
+/* grid-template-area 
+각 영역에 이름을 붙이고, 그 이름을 이용해서 배치하는 방법
+빈칸만들기 - 마침표는 셀이 있어야 할자리를 대체한다
+셀을 빈칸으로 만들기 .하나 찍거나 none, ...여러개의 마침표로 표현 가능하다.
+-공백없이 마침표를 여러개 찍으면 하나의 마침표와 같다
+사이의 간격 띄워쓰기는 한칸 이상만 띄우면 됨, 여러칸 띄워도 한칸과 같음.
+*/
+
+.container{
+  text-align: center;
+  gap: 1rem;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas: 
+  "header header header"
+  "side-a main side-b"
+  "  ..     ..    .."
+  "  ..     ..    .."
+  "  ..     ..    .."
+  "  ..     ..    .."
+  "footer footer footer"
+  ;
+  height: 80vh;
+  grid-auto-rows: 100px 1fr 30px 100px;
+  
+}
+
+.header{
+  grid-area: header;
+}
+.side-a{grid-area: side-a;}
+.side-b{grid-area: side-b;}
+.main{grid-area: main;}
+.footer{grid-area: footer;}
+
+.item{}
+
+
